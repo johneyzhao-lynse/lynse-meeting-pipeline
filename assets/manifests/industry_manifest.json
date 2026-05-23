@@ -1,0 +1,314 @@
+{
+  "industries": [
+    {
+      "name": "insurance-industry.md",
+      "display_name": "保险",
+      "short_description": "为保险场景提供关注维度与风险边界。",
+      "user_visible_summary": "保险行业表达增强与风险边界。",
+      "industry_labels": [
+        "保险"
+      ],
+      "keywords": [
+        "保险",
+        "理赔",
+        "保单",
+        "核保",
+        "赔付"
+      ],
+      "risk_level": "high",
+      "editable": false
+    },
+    {
+      "name": "consulting-industry.md",
+      "display_name": "咨询",
+      "short_description": "为咨询场景提供关注维度与风险边界。",
+      "user_visible_summary": "咨询行业表达增强与风险边界。",
+      "industry_labels": [
+        "咨询"
+      ],
+      "keywords": [
+        "咨询",
+        "访谈",
+        "洞察",
+        "项目"
+      ],
+      "risk_level": "medium",
+      "editable": false
+    },
+    {
+      "name": "construction-industry.md",
+      "display_name": "建筑工程",
+      "short_description": "为建筑工程场景提供关注维度与风险边界。",
+      "user_visible_summary": "建筑工程行业表达增强与风险边界。",
+      "industry_labels": [
+        "建筑工程"
+      ],
+      "keywords": [
+        "工程",
+        "施工",
+        "整改",
+        "验收"
+      ],
+      "risk_level": "high",
+      "editable": false
+    },
+    {
+      "name": "real-estate-industry.md",
+      "display_name": "房地产",
+      "short_description": "为房地产场景提供关注维度与风险边界。",
+      "user_visible_summary": "房地产行业表达增强与风险边界。",
+      "industry_labels": [
+        "房地产"
+      ],
+      "keywords": [
+        "房源",
+        "贷款",
+        "税费",
+        "成交"
+      ],
+      "risk_level": "high",
+      "editable": false
+    },
+    {
+      "name": "investment-financing-industry.md",
+      "display_name": "投融资",
+      "short_description": "为投融资场景提供关注维度与风险边界。",
+      "user_visible_summary": "投融资行业表达增强与风险边界。",
+      "industry_labels": [
+        "投融资"
+      ],
+      "keywords": [
+        "融资",
+        "估值",
+        "投资人",
+        "尽调"
+      ],
+      "risk_level": "high",
+      "editable": false
+    },
+    {
+      "name": "government-project-industry.md",
+      "display_name": "政府项目",
+      "short_description": "为政府项目场景提供关注维度与风险边界。",
+      "user_visible_summary": "政府项目行业表达增强与风险边界。",
+      "industry_labels": [
+        "政府项目"
+      ],
+      "keywords": [
+        "政府",
+        "招投标",
+        "验收",
+        "审批",
+        "城市设计",
+        "国际征集",
+        "方案征集",
+        "征集",
+        "招标",
+        "预审",
+        "任务书",
+        "答疑",
+        "主管单位",
+        "自然资源局",
+        "建管委",
+        "区政府",
+        "规划"
+      ],
+      "risk_level": "high",
+      "editable": false
+    },
+    {
+      "name": "education-training-industry.md",
+      "display_name": "教育培训",
+      "short_description": "为教育培训场景提供关注维度与风险边界。",
+      "user_visible_summary": "教育培训行业表达增强与风险边界。",
+      "industry_labels": [
+        "教育培训"
+      ],
+      "keywords": [
+        "教育",
+        "培训",
+        "课程",
+        "学员"
+      ],
+      "risk_level": "medium",
+      "editable": false
+    },
+    {
+      "name": "legal-industry.md",
+      "display_name": "法律",
+      "short_description": "为法律场景提供关注维度与风险边界。",
+      "user_visible_summary": "法律行业表达增强与风险边界。",
+      "industry_labels": [
+        "法律"
+      ],
+      "keywords": [
+        "法律",
+        "合同",
+        "仲裁",
+        "诉讼"
+      ],
+      "risk_level": "high",
+      "editable": false
+    },
+    {
+      "name": "marketing-industry.md",
+      "display_name": "营销",
+      "short_description": "为营销场景提供关注维度与风险边界。",
+      "user_visible_summary": "营销行业表达增强与风险边界。",
+      "industry_labels": [
+        "营销"
+      ],
+      "keywords": [
+        "营销",
+        "渠道",
+        "投放",
+        "ROI"
+      ],
+      "risk_level": "medium",
+      "editable": false
+    },
+    {
+      "name": "financial-planning-industry.md",
+      "display_name": "金融理财",
+      "short_description": "为金融理财场景提供关注维度与风险边界。",
+      "user_visible_summary": "金融理财行业表达增强与风险边界。",
+      "industry_labels": [
+        "金融理财"
+      ],
+      "keywords": [
+        "理财",
+        "收益",
+        "风险",
+        "资产"
+      ],
+      "risk_level": "high",
+      "editable": false
+    },
+    {
+      "name": "it-internet-industry.md",
+      "display_name": "IT互联网",
+      "short_description": "为IT互联网行业提供关注维度与风险边界。",
+      "user_visible_summary": "IT互联网行业表达增强与风险边界。",
+      "industry_labels": [
+        "IT互联网"
+      ],
+      "keywords": [
+        "产品",
+        "需求",
+        "版本",
+        "功能",
+        "上架",
+        "提审",
+        "迭代",
+        "订阅",
+        "会员",
+        "续费",
+        "SDK",
+        "API",
+        "APP",
+        "排期",
+        "商业化",
+        "智能体",
+        "Agent"
+      ],
+      "risk_level": "medium",
+      "editable": false
+    },
+    {
+      "name": "semiconductor-chip-industry.md",
+      "display_name": "半导体芯片",
+      "short_description": "为半导体芯片行业提供关注维度与风险边界。",
+      "user_visible_summary": "半导体芯片行业表达增强与风险边界。",
+      "industry_labels": [
+        "半导体芯片"
+      ],
+      "keywords": [
+        "芯片",
+        "半导体",
+        "光互联",
+        "光模块",
+        "算力",
+        "GPU",
+        "制程",
+        "封装",
+        "晶圆",
+        "带宽",
+        "功耗",
+        "节点",
+        "NVL",
+        "HBM"
+      ],
+      "risk_level": "high",
+      "editable": false
+    },
+    {
+      "name": "cultural-tourism-industry.md",
+      "display_name": "文旅文创",
+      "short_description": "为文旅文创行业提供关注维度与风险边界。",
+      "user_visible_summary": "文旅文创行业表达增强与风险边界。",
+      "industry_labels": [
+        "文旅文创"
+      ],
+      "keywords": [
+        "文旅",
+        "文创",
+        "剧场",
+        "剧本杀",
+        "沉浸式",
+        "工业遗存",
+        "老厂房",
+        "改造",
+        "招商",
+        "翻台率",
+        "客单价",
+        "复购",
+        "商业地产",
+        "太古里",
+        "K11",
+        "第一太平戴维斯",
+        "戴德梁行",
+        "仲量联行",
+        "世邦魏理仕",
+        "高力国际",
+        "建筑设计事务所",
+        "gmp",
+        "赫尔佐格",
+        "Foster",
+        "福斯特",
+        "扎哈",
+        "BIG",
+        "SANAA",
+        "城市更新",
+        "EPC"
+      ],
+      "risk_level": "medium",
+      "editable": false
+    },
+    {
+      "name": "ecommerce-retail-industry.md",
+      "display_name": "电商零售",
+      "short_description": "为电商零售行业提供关注维度与风险边界。",
+      "user_visible_summary": "电商零售行业表达增强与风险边界。",
+      "industry_labels": [
+        "电商零售"
+      ],
+      "keywords": [
+        "电商",
+        "零售",
+        "京东",
+        "天猫",
+        "拼多多",
+        "抖音",
+        "DRP",
+        "佣金",
+        "年费",
+        "返利",
+        "账期",
+        "入驻",
+        "结算"
+      ],
+      "risk_level": "high",
+      "editable": false
+    }
+  ]
+}

@@ -1,0 +1,933 @@
+{
+  "templates": [
+    {
+      "name": "product-analysis.md",
+      "display_name": "产品分析总结",
+      "short_description": "适用于产品分析总结场景的结构化总结模板。",
+      "scene_labels": [
+        "技术讨论",
+        "管理决策"
+      ],
+      "intent_labels": [
+        "问题诊断",
+        "方案设计"
+      ],
+      "output_shape": [
+        "决策备忘录"
+      ],
+      "keywords": [
+        "产品",
+        "用户",
+        "需求",
+        "优先级",
+        "版本",
+        "功能",
+        "发布",
+        "上架",
+        "渠道"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "insurance-customer-needs.md",
+      "display_name": "保险客户需求总结",
+      "short_description": "适用于保险客户需求总结场景的结构化总结模板。",
+      "scene_labels": [
+        "客户沟通"
+      ],
+      "intent_labels": [
+        "方案设计"
+      ],
+      "output_shape": [
+        "客户跟进摘要"
+      ],
+      "keywords": [
+        "保障",
+        "保额",
+        "保费",
+        "保险",
+        "需求"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "insurance-claim-communication.md",
+      "display_name": "保险理赔沟通总结",
+      "short_description": "适用于保险理赔沟通总结场景的结构化总结模板。",
+      "scene_labels": [
+        "客户沟通"
+      ],
+      "intent_labels": [
+        "问题诊断",
+        "行动规划"
+      ],
+      "output_shape": [
+        "客户跟进摘要",
+        "行动清单"
+      ],
+      "keywords": [
+        "理赔",
+        "保单",
+        "报案",
+        "审核",
+        "材料",
+        "诊断证明"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "two-person-call.md",
+      "display_name": "双人通话总结",
+      "short_description": "适用于双人通话总结场景的结构化总结模板。",
+      "scene_labels": [
+        "客户沟通"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "通话",
+        "双方",
+        "对话"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "contract-review-communication.md",
+      "display_name": "合同审查沟通总结",
+      "short_description": "适用于合同审查沟通总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "合同审查",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "consulting-interview.md",
+      "display_name": "咨询访谈总结",
+      "short_description": "适用于咨询访谈总结场景的结构化总结模板。",
+      "scene_labels": [
+        "访谈调研"
+      ],
+      "intent_labels": [
+        "观点采访"
+      ],
+      "output_shape": [
+        "访谈洞察"
+      ],
+      "keywords": [
+        "咨询",
+        "访谈",
+        "假设",
+        "洞察"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "consulting-project-meeting.md",
+      "display_name": "咨询项目会议总结",
+      "short_description": "适用于咨询项目会议总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "咨询项目",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "retrospective-meeting.md",
+      "display_name": "复盘会议总结",
+      "short_description": "适用于复盘会议总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "复盘会议",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "customer-communication.md",
+      "display_name": "客户沟通总结",
+      "short_description": "适用于客户沟通总结场景的结构化总结模板。",
+      "scene_labels": [
+        "客户沟通"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "客户跟进摘要"
+      ],
+      "keywords": [
+        "客户",
+        "沟通",
+        "反馈",
+        "诉求"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "construction-project-meeting.md",
+      "display_name": "建筑工程会议总结",
+      "short_description": "适用于建筑工程会议总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "建筑工程",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "architectural-design-review.md",
+      "display_name": "建筑设计评审总结",
+      "short_description": "适用于建筑设计评审总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "建筑设计",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "action-items-extraction.md",
+      "display_name": "待办事项提取",
+      "short_description": "适用于待办事项提取场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "待办事项",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "real-estate-transaction-follow-up.md",
+      "display_name": "房地产交易跟进总结",
+      "short_description": "适用于房地产交易跟进总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "房地产交",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "real-estate-customer-communication.md",
+      "display_name": "房地产客户沟通总结",
+      "short_description": "适用于房地产客户沟通总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "房地产客",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "real-estate-project-meeting.md",
+      "display_name": "房地产项目会议总结",
+      "short_description": "适用于房地产项目会议总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "房地产项",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "fundraising-roadshow.md",
+      "display_name": "投融资路演总结",
+      "short_description": "适用于投融资路演总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "投融资路",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "investor-meeting.md",
+      "display_name": "投资人会议总结",
+      "short_description": "适用于投资人会议总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "投资人会",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "investment-review.md",
+      "display_name": "投资理财复盘总结",
+      "short_description": "适用于投资理财复盘总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "投资理财",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "podcast-content.md",
+      "display_name": "播客内容总结",
+      "short_description": "适用于播客内容总结场景的结构化总结模板。",
+      "scene_labels": [
+        "内容创作"
+      ],
+      "intent_labels": [
+        "知识沉淀"
+      ],
+      "output_shape": [
+        "内容大纲"
+      ],
+      "keywords": [
+        "播客",
+        "节目",
+        "主持"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "government-project-bidding.md",
+      "display_name": "政府项目招投标总结",
+      "short_description": "适用于政府项目招投标总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作",
+        "政府项目"
+      ],
+      "intent_labels": [
+        "信息同步",
+        "方案设计",
+        "行动规划"
+      ],
+      "output_shape": [
+        "会议纪要",
+        "行动清单"
+      ],
+      "keywords": [
+        "政府项目",
+        "城市设计",
+        "国际征集",
+        "方案征集",
+        "征集",
+        "招标",
+        "预审",
+        "竞征",
+        "任务书",
+        "答疑",
+        "成果提交",
+        "方案评审",
+        "主创",
+        "设计团队",
+        "主管单位",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "government-project-report.md",
+      "display_name": "政府项目汇报总结",
+      "short_description": "适用于政府项目汇报总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "政府项目",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "education-training-communication.md",
+      "display_name": "教育培训沟通总结",
+      "short_description": "适用于教育培训沟通总结场景的结构化总结模板。",
+      "scene_labels": [
+        "学习培训"
+      ],
+      "intent_labels": [
+        "知识沉淀"
+      ],
+      "output_shape": [
+        "学习笔记"
+      ],
+      "keywords": [
+        "培训",
+        "课程",
+        "学员"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "legal-consultation.md",
+      "display_name": "法律咨询总结",
+      "short_description": "适用于法律咨询总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "法律咨询",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "property-service-communication.md",
+      "display_name": "物业服务沟通总结",
+      "short_description": "适用于物业服务沟通总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "物业服务",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "financial-planning-customer-communication.md",
+      "display_name": "理财客户沟通总结",
+      "short_description": "适用于理财客户沟通总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "理财客户",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "user-research-interview.md",
+      "display_name": "用户研究访谈总结",
+      "short_description": "适用于用户研究访谈总结场景的结构化总结模板。",
+      "scene_labels": [
+        "访谈调研"
+      ],
+      "intent_labels": [
+        "观点采访"
+      ],
+      "output_shape": [
+        "访谈洞察"
+      ],
+      "keywords": [
+        "用户",
+        "访谈",
+        "痛点",
+        "动机"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "marketing-campaign-planning.md",
+      "display_name": "营销策划总结",
+      "short_description": "适用于营销策划总结场景的结构化总结模板。",
+      "scene_labels": [
+        "内容创作",
+        "销售服务"
+      ],
+      "intent_labels": [
+        "方案设计"
+      ],
+      "output_shape": [
+        "内容大纲"
+      ],
+      "keywords": [
+        "营销",
+        "渠道",
+        "投放",
+        "用户",
+        "产品",
+        "商业模式",
+        "冷启动",
+        "品牌",
+        "增长",
+        "剧场",
+        "沉浸式",
+        "内容",
+        "推广"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "technical-interview-summary.md",
+      "display_name": "技术岗位候选人面试总结",
+      "short_description": "适用于技术、产品技术复合和项目管理岗位候选人面试场景的结构化总结模板。",
+      "scene_labels": [
+        "招聘面试",
+        "技术讨论"
+      ],
+      "intent_labels": [
+        "问题诊断",
+        "决策讨论"
+      ],
+      "output_shape": [
+        "候选人评估",
+        "行动清单"
+      ],
+      "keywords": [
+        "面试",
+        "候选人",
+        "简历",
+        "技术岗",
+        "技术岗位",
+        "前端工程师",
+        "工作经历",
+        "项目经历",
+        "薪资",
+        "离职",
+        "HR",
+        "到岗",
+        "offer",
+        "能力",
+        "岗位",
+        "技术栈",
+        "base",
+        "项目奖"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "interview-insights.md",
+      "display_name": "访谈洞察总结",
+      "short_description": "适用于访谈洞察总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "访谈洞察",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "classroom-teaching.md",
+      "display_name": "课堂教学总结",
+      "short_description": "适用于课堂教学总结场景的结构化总结模板。",
+      "scene_labels": [
+        "学习培训"
+      ],
+      "intent_labels": [
+        "知识沉淀"
+      ],
+      "output_shape": [
+        "学习笔记"
+      ],
+      "keywords": [
+        "课堂",
+        "教学",
+        "讲解"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "general-meeting.md",
+      "display_name": "通用会议总结",
+      "short_description": "适用于通用会议总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "会议",
+        "讨论",
+        "同步",
+        "议题",
+        "行动项"
+      ],
+      "editable": true,
+      "default_for_fallback": true
+    },
+    {
+      "name": "sales-follow-up.md",
+      "display_name": "销售跟进总结",
+      "short_description": "适用于销售跟进总结场景的结构化总结模板。",
+      "scene_labels": [
+        "销售服务",
+        "客户沟通"
+      ],
+      "intent_labels": [
+        "行动规划"
+      ],
+      "output_shape": [
+        "客户跟进摘要",
+        "行动清单"
+      ],
+      "keywords": [
+        "销售",
+        "跟进",
+        "成交",
+        "预算",
+        "谈判",
+        "报价",
+        "收费",
+        "商务",
+        "合作",
+        "客户",
+        "采购",
+        "续费",
+        "合同",
+        "DRP",
+        "AWS",
+        "京东"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "channel-meeting.md",
+      "display_name": "渠道会议总结",
+      "short_description": "适用于渠道拓展、分销合作、平台入驻等渠道类会议的结构化总结模板。",
+      "scene_labels": [
+        "销售服务"
+      ],
+      "intent_labels": [
+        "方案设计",
+        "行动规划"
+      ],
+      "output_shape": [
+        "客户跟进摘要",
+        "行动清单"
+      ],
+      "keywords": [
+        "渠道",
+        "分销",
+        "入驻",
+        "佣金",
+        "年费",
+        "返利",
+        "账期",
+        "DRP",
+        "经销商",
+        "代理"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "requirements-review.md",
+      "display_name": "需求评审总结",
+      "short_description": "适用于需求评审总结场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作",
+        "技术讨论"
+      ],
+      "intent_labels": [
+        "决策讨论",
+        "方案设计"
+      ],
+      "output_shape": [
+        "会议纪要",
+        "决策备忘录"
+      ],
+      "keywords": [
+        "需求",
+        "评审",
+        "方案",
+        "风险",
+        "依赖",
+        "版本",
+        "提审",
+        "上架",
+        "更新",
+        "发布"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "project-weekly-meeting.md",
+      "display_name": "项目周会总结",
+      "short_description": "适用于项目周会总结场景的结构化总结模板。",
+      "scene_labels": [
+        "项目推进",
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步",
+        "任务分配"
+      ],
+      "output_shape": [
+        "会议纪要",
+        "行动清单"
+      ],
+      "keywords": [
+        "周会",
+        "进展",
+        "阻塞",
+        "计划"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "project-progress-meeting.md",
+      "display_name": "项目推进会总结",
+      "short_description": "适用于项目推进会总结场景的结构化总结模板。",
+      "scene_labels": [
+        "项目推进",
+        "会议协作"
+      ],
+      "intent_labels": [
+        "行动规划",
+        "任务分配"
+      ],
+      "output_shape": [
+        "会议纪要",
+        "行动清单"
+      ],
+      "keywords": [
+        "推进",
+        "协调",
+        "资源",
+        "里程碑"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "high-fidelity-minutes.md",
+      "display_name": "高保真纪要",
+      "short_description": "适用于高保真纪要场景的结构化总结模板。",
+      "scene_labels": [
+        "会议协作"
+      ],
+      "intent_labels": [
+        "信息同步"
+      ],
+      "output_shape": [
+        "会议纪要"
+      ],
+      "keywords": [
+        "高保真纪",
+        "会议"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "financial-survey-visit.md",
+      "display_name": "银企调研访问总结",
+      "short_description": "适用于金融机构/银行客户经理对企业例行访问、银企调研的结构化总结模板。",
+      "scene_labels": [
+        "客户沟通"
+      ],
+      "intent_labels": [
+        "信息同步",
+        "行动规划"
+      ],
+      "output_shape": [
+        "客户跟进摘要",
+        "行动清单"
+      ],
+      "keywords": [
+        "银行",
+        "金融",
+        "调研",
+        "访问",
+        "尽调",
+        "结算",
+        "跨境",
+        "收汇",
+        "出海",
+        "银企"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    },
+    {
+      "name": "commercial-estate-consulting-expert.md",
+      "display_name": "商业地产咨询顾问总结",
+      "short_description": "适用于城市更新、工业遗存改造、文商旅存量资产运营领域的合作沟通与项目研判会议。",
+      "scene_labels": [
+        "客户沟通"
+      ],
+      "intent_labels": [
+        "方案设计",
+        "行动规划"
+      ],
+      "output_shape": [
+        "客户跟进摘要",
+        "行动清单"
+      ],
+      "keywords": [
+        "城市更新",
+        "工业遗存",
+        "文商旅",
+        "商业地产",
+        "招商",
+        "改造",
+        "运营",
+        "存量",
+        "老厂房",
+        "EPC",
+        "咨询",
+        "项目"
+      ],
+      "editable": true,
+      "default_for_fallback": false
+    }
+  ]
+}

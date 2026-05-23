@@ -1,0 +1,25 @@
+# API keys and local config
+config/agent.local.json
+config/local.json
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+*.egg-info/
+
+# IDE
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+
+# Outputs and logs
+examples/outputs/
+examples/run-logs/
+examples/classification-reports/
+examples/tui-logs/
+
+# Claude Code
+.claude/
