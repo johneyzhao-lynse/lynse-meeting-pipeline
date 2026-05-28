@@ -501,10 +501,14 @@ def main(argv: list[str] | None = None) -> int:
             run_log["attempts"].append({"mode": "strict", "status": "success", "trigger": failure.reason})
 
         output_path.parent.mkdir(parents=True, exist_ok=True)
+        profile_tag = f"用户画像: {args.user_prompt_profile}" if profile_prompt_text else "用户画像: OFF"
+        dynamic_tag = "动态提示词: ON" if args.dynamic_prompt else "动态提示词: OFF"
         params_line = (
             f"| 模型: {args.model}"
             f" | 思维模式: {args.thinking}"
             f" | 推理深度: {args.reasoning_effort}"
+            f" | {profile_tag}"
+            f" | {dynamic_tag}"
             f" | max_tokens: {args.max_tokens}"
             f" | temperature: {args.temperature} |"
         )

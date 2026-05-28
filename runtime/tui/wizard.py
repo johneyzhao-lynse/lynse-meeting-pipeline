@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
 from typing import Any
 
@@ -31,6 +32,7 @@ from runtime.output import format_summary_output
 from runtime.safety import detect_safety_risks, sanitize_sensitive_output
 from runtime.agent.config import load_agent_config, load_model_pair_config
 from runtime.title import extract_date
+from runtime.user_prompt.profile import compile_profile_prompt, load_user_prompt_profile
 
 
 class NonEmptyValidator(Validator):
@@ -145,6 +147,31 @@ def run_wizard(
             return
 
     template_path = resolve_file(TEMPLATE_DIR, template_name)
+
+    # --- 用户画像选择 ---
+    profile_prompt_text: str | None = None
+    profile_name: str | None = None
+    if state.profile_enabled:
+        profile_config_path = root / "config" / "user_prompts.local.json"
+        if profile_config_path.exists():
+            try:
+                profile_data = json.loads(profile_config_path.read_text(encoding="utf-8"))
+                profile_names = list(profile_data.get("profiles", {}).keys())
+                if profile_names:
+                    profile_options = profile_names + ["(跳过)"]
+                    profile_name = _pick_from_list("用户画像", profile_options, default="(跳过)")
+                    if profile_name and profile_name != "(跳过)":
+                        try:
+                            profile = load_user_prompt_profile(profile_config_path, profile_name)
+                            profile_prompt_text = compile_profile_prompt(profile)
+                            show_info(f"已加载用户画像: {profile_name}")
+                        except ValueError as exc:
+                            show_error(f"加载用户画像失败: {exc}")
+            except (json.JSONDecodeError, OSError):
+                pass
+        else:
+            show_info("提示: 可在 config/user_prompts.local.json 中配置用户画像，自动注入个性化偏好")
+
     safety_risks = detect_safety_risks(transcript_text)
 
     console.print("\n")
@@ -152,6 +179,7 @@ def run_wizard(
         "转写文本": transcript_path.name,
         "模板": template_name,
         "行业提示词": industry_name or "无",
+        "用户画像": f"{profile_name} (ON)" if profile_prompt_text else ("OFF (已关闭)" if not state.profile_enabled else "无"),
         "动态提示词": "ON" if state.dynamic_prompt else "OFF",
         "模型": state.model,
         "安全模式": state.safety_mode,
@@ -205,6 +233,7 @@ def run_wizard(
         safety_mode=state.safety_mode,
         platform_prompt_path=PLATFORM_PROMPT,
         dynamic_template_text=dynamic_template_text,
+        profile_prompt_text=profile_prompt_text,
         meeting_type=meeting_type,
         meeting_date=meeting_date,
     )
@@ -360,10 +389,12 @@ def run_wizard(
 
     output_path = OUTPUT_DIR / f"{transcript_path.stem}__{template_path.stem}.md"
     output_path.parent.mkdir(parents=True, exist_ok=True)
+    profile_tag = f"用户画像: {profile_name}" if profile_prompt_text else "用户画像: OFF"
     params_line = (
         f"| 模型: {state.model}"
         f" | 思维模式: {state.thinking}"
         f" | 推理深度: {state.reasoning_effort or 'medium'}"
+        f" | {profile_tag}"
         f" | max_tokens: {state.max_tokens}"
         f" | temperature: {state.temperature} |"
     )

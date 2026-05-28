@@ -175,13 +175,21 @@ def cmd_dynamic(args: str, state: SessionState, logger: SessionLogger, root: Pat
     show_success(f"动态提示词 [{icon}]: {old} → {state.dynamic_prompt}")
 
 
+def cmd_profile(args: str, state: SessionState, logger: SessionLogger, root: Path) -> None:
+    old = state.profile_enabled
+    state.profile_enabled = not old
+    logger.log_config_change("profile_enabled", str(old), str(state.profile_enabled))
+    icon = "ON" if state.profile_enabled else "OFF"
+    show_success(f"用户画像加载 [{icon}]: {old} → {state.profile_enabled}")
+
+
 def cmd_config(args: str, state: SessionState, logger: SessionLogger, root: Path) -> None:
     show_config_table(state.as_dict())
 
     parts = args.strip().split(maxsplit=1)
     if not parts:
         show_info("用法: /config <key> <value>  (例如: /config safety_mode strict)")
-        show_info("可修改的键: model, base_url, safety_mode, temperature, max_tokens, thinking, reasoning_effort, confidence_threshold, routing_mode, dynamic_prompt")
+        show_info("可修改的键: model, base_url, safety_mode, temperature, max_tokens, thinking, reasoning_effort, confidence_threshold, routing_mode, dynamic_prompt, profile_enabled")
         return
 
     key = parts[0]
@@ -247,6 +255,7 @@ COMMANDS: dict[str, CommandFn] = {
     "/think": cmd_think,
     "/route": cmd_route,
     "/dynamic": cmd_dynamic,
+    "/profile": cmd_profile,
     "/model": cmd_model,
     "/list": cmd_list,
     "/help": cmd_help,

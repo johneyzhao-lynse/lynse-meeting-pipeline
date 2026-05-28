@@ -1,6 +1,6 @@
 [project]
 name = "lynse-meeting-pipeline"
-version = "0.1.0"
+version = "0.2.0"
 description = "CLI pipeline for structured meeting summaries from audio transcripts"
 requires-python = ">=3.10"
 

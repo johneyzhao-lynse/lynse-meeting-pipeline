@@ -164,6 +164,7 @@ def show_help() -> None:
     table.add_row("/think", "切换思维模式开关（enabled ↔ disabled）")
     table.add_row("/route [mode]", "查看/切换路由模式（rules, llm_primary, shadow, grayscale）")
     table.add_row("/dynamic", "切换动态提示词开关（ON ↔ OFF）")
+    table.add_row("/profile", "切换用户画像加载开关（ON ↔ OFF）")
     table.add_row("/model [name]", "查看预设模型列表，或切换模型（如: /model qwen）")
     table.add_row("/list [type]", "列出可用资源: transcripts, templates, industries")
     table.add_row("/help", "显示本帮助")

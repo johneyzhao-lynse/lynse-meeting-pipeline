@@ -39,6 +39,7 @@ class SessionState:
     confidence_threshold: float = 0.65
     routing_mode: str = "llm_primary"
     dynamic_prompt: bool = False
+    profile_enabled: bool = True
     classify_meeting: bool = False
     token_usage: TokenUsage = field(default_factory=TokenUsage)
     call_count: int = 0
@@ -63,6 +64,7 @@ def load_initial_state(root: Path) -> SessionState:
     if local_config_path.exists():
         data = json.loads(local_config_path.read_text(encoding="utf-8"))
         state.safety_mode = data.get("safety_mode", state.safety_mode)
+        state.profile_enabled = data.get("profile_enabled", state.profile_enabled)
         state.temperature = float(data.get("temperature", state.temperature))
         state.max_tokens = int(data.get("max_tokens", state.max_tokens))
         state.thinking = data.get("thinking", state.thinking)
