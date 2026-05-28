@@ -29,6 +29,7 @@ def build_messages(
     platform_prompt_path: Path = PLATFORM_PROMPT,
     user_prompt_text: str | None = None,
     dynamic_template_text: str | None = None,
+    profile_prompt_text: str | None = None,
     meeting_type: str | None = None,
     meeting_date: str | None = None,
 ) -> list[dict[str, str]]:
@@ -56,6 +57,8 @@ def build_messages(
         template_text = dynamic_template_text
     else:
         template_text = read_text(template_path)
+    if profile_prompt_text is not None and user_prompt_text is None and safety_mode != "strict":
+        template_text = template_text.rstrip() + "\n\n---\n\n" + profile_prompt_text.strip() + "\n"
     user_parts = [
         f"# 用户个性化风格\n\n{user_style.strip()}",
         f"# 用户总结模板\n\n{template_text}",

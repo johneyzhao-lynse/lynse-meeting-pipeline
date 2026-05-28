@@ -96,12 +96,26 @@ class TestConfigCommand(unittest.TestCase):
             self.assertEqual(state.model, original_model)
 
 
+def _write_model_config(root: Path, models: dict) -> None:
+    config_dir = root / "config"
+    config_dir.mkdir(parents=True, exist_ok=True)
+    (config_dir / "agent.local.json").write_text(
+        json.dumps({"models": models}), encoding="utf-8"
+    )
+
+
 class TestModelCommand(unittest.TestCase):
     def test_builtin_qwen_profile_uses_max_model_name(self):
         state = SessionState()
         with TemporaryDirectory() as tmp_dir:
             logger = SessionLogger(log_dir=Path(tmp_dir))
             root = Path(tmp_dir)
+            _write_model_config(root, {
+                "qwen": {
+                    "model": "qwen-3.7-max",
+                    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+                },
+            })
             with patch("runtime.tui.display.console"):
                 dispatch("/model qwen", state, logger, root)
             self.assertEqual(state.model, "qwen-3.7-max")
@@ -112,6 +126,12 @@ class TestModelCommand(unittest.TestCase):
         with TemporaryDirectory() as tmp_dir:
             logger = SessionLogger(log_dir=Path(tmp_dir))
             root = Path(tmp_dir)
+            _write_model_config(root, {
+                "qwen-plus": {
+                    "model": "qwen-3.6-plus",
+                    "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1",
+                },
+            })
             with patch("runtime.tui.display.console"):
                 dispatch("/model qwen-plus", state, logger, root)
             self.assertEqual(state.model, "qwen-3.6-plus")

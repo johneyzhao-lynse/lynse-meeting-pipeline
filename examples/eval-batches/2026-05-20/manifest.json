@@ -1,0 +1,213 @@
+{
+  "batch_id": "2026-05-20-first-transcript-batch",
+  "created_at": "2026-05-20",
+  "transcript_root": "../../transcripts",
+  "purpose": [
+    "seed_regression_evaluation",
+    "classifier_routing_improvement",
+    "prompt_template_iteration"
+  ],
+  "samples": [
+    {
+      "file": "01-24 会议类型：光互联与AI算力基础设施技术研讨会.txt",
+      "scene": "technical_seminar",
+      "recommended_template": "general-meeting.md",
+      "recommended_industry": null,
+      "usage": ["scene_insight", "long_technical_discussion"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "01-24 会议类型：智能体时代基础设施与中小企业赋能.txt",
+      "scene": "technical_seminar",
+      "recommended_template": "general-meeting.md",
+      "recommended_industry": null,
+      "usage": ["scene_insight", "technical_discussion_template_gap"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "01-24 闭门会议：AI技术演进与世界模型前沿探讨.txt",
+      "scene": "closed_door_technical_discussion",
+      "recommended_template": "general-meeting.md",
+      "recommended_industry": null,
+      "usage": ["scene_insight", "technical_discussion_template_gap"],
+      "sensitivity": "high"
+    },
+    {
+      "file": "01-27 会议类型：产品开发与版本提审协调会.txt",
+      "scene": "product_release_coordination",
+      "recommended_template": "requirements-review.md",
+      "recommended_industry": null,
+      "usage": ["regression", "release_risk_extraction", "action_items"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "01月27日 技术岗面试会议纪要：Web前端工程师.txt",
+      "scene": "technical_interview",
+      "recommended_template": "technical-interview-summary.md",
+      "recommended_industry": null,
+      "usage": ["new_template_seed", "classifier_routing_gap", "regression"],
+      "sensitivity": "high"
+    },
+    {
+      "file": "03-03 产品周会：AI个人助手架构与商业化路径讨论.txt",
+      "scene": "product_weekly_meeting",
+      "recommended_template": "product-analysis.md",
+      "recommended_industry": null,
+      "usage": ["regression", "product_strategy", "architecture_discussion"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "03-03 产品周会：AI会议纪要硬件与数字分身平台讨论.txt",
+      "scene": "product_weekly_meeting",
+      "recommended_template": "product-analysis.md",
+      "recommended_industry": null,
+      "usage": ["regression", "hardware_product_planning"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "03-19 产品：AI助手功能需求评审.txt",
+      "scene": "product_requirements_review",
+      "recommended_template": "requirements-review.md",
+      "recommended_industry": null,
+      "usage": ["regression", "requirements_review", "action_items"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "03-19 产品：AI助手功能需求评审 2.txt",
+      "scene": "product_requirements_review",
+      "recommended_template": "requirements-review.md",
+      "recommended_industry": null,
+      "usage": ["duplicate_do_not_score"],
+      "sensitivity": "medium",
+      "duplicate_of": "03-19 产品：AI助手功能需求评审.txt"
+    },
+    {
+      "file": "04-21 营销：新品冷启动营销策划.txt",
+      "scene": "marketing_campaign_planning",
+      "recommended_template": "marketing-campaign-planning.md",
+      "recommended_industry": "marketing-industry.md",
+      "usage": ["regression", "marketing_prompt_iteration"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "04-23 产品：AI录音硬件产品讨论.txt",
+      "scene": "product_planning",
+      "recommended_template": "product-analysis.md",
+      "recommended_industry": null,
+      "usage": ["short_sample", "product_planning"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "04-27 产品：1.06版本功能评审与上架安排.txt",
+      "scene": "product_release_review",
+      "recommended_template": "requirements-review.md",
+      "recommended_industry": null,
+      "usage": ["core_regression", "release_risk_extraction", "app_store_review"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "04-27 销售：京东DRP收费与AWS合作谈判.txt",
+      "scene": "sales_business_negotiation",
+      "recommended_template": "sales-follow-up.md",
+      "recommended_industry": null,
+      "usage": ["classifier_routing_gap", "sales_template_iteration", "regression"],
+      "sensitivity": "high"
+    },
+    {
+      "file": "04-28 产品：AI视频生成产品规划.txt",
+      "scene": "product_planning",
+      "recommended_template": "product-analysis.md",
+      "recommended_industry": null,
+      "usage": ["regression", "product_strategy"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "04-28 产品：儿童学习陪伴设备产品规划.txt",
+      "scene": "product_planning",
+      "recommended_template": "product-analysis.md",
+      "recommended_industry": "education-training-industry.md",
+      "usage": ["product_planning", "education_context"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "05-08 产品：智能语音记录与思维整理产品规划.txt",
+      "scene": "product_planning",
+      "recommended_template": "product-analysis.md",
+      "recommended_industry": null,
+      "usage": ["regression", "product_strategy"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "05-08 产品：跨平台会员订阅与续费逻辑.txt",
+      "scene": "subscription_logic_discussion",
+      "recommended_template": "requirements-review.md",
+      "recommended_industry": null,
+      "usage": ["short_sample", "billing_logic", "requirements_review"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "05-08 营销：沉浸式剧场商业模式探讨.txt",
+      "scene": "business_model_discussion",
+      "recommended_template": "marketing-campaign-planning.md",
+      "recommended_industry": "marketing-industry.md",
+      "usage": ["classifier_routing_gap", "marketing_business_model"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "05-18 研发：APP版本开发需求对齐.txt",
+      "scene": "engineering_requirements_alignment",
+      "recommended_template": "requirements-review.md",
+      "recommended_industry": null,
+      "usage": ["core_regression", "engineering_alignment", "action_items"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "05-19 政府类：北新泾新朝阳地区城市设计国际征集.txt",
+      "scene": "government_project_design_competition",
+      "recommended_template": "government-project-bidding.md",
+      "recommended_industry": "government-project-industry.md",
+      "usage": ["core_regression", "classifier_routing_gap", "government_prompt_iteration"],
+      "sensitivity": "high"
+    },
+    {
+      "file": "12-30 合作洽谈会：大连中车工业遗存项目合作沟通.txt",
+      "scene": "business_cooperation_meeting",
+      "recommended_template": "customer-communication.md",
+      "recommended_industry": "consulting-industry.md",
+      "usage": ["core_regression", "customer_needs", "business_follow_up"],
+      "sensitivity": "high"
+    },
+    {
+      "file": "2026-04-20 16:01:10.txt",
+      "scene": "mixed_business_discussion",
+      "recommended_template": "general-meeting.md",
+      "recommended_industry": null,
+      "usage": ["legacy_regression", "routing_observation"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "2026年1月8日 周会：项目进度与问题讨论.txt",
+      "scene": "project_weekly_meeting",
+      "recommended_template": "project-weekly-meeting.md",
+      "recommended_industry": null,
+      "usage": ["regression", "weekly_meeting", "project_progress"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "[2023-12-29] 周会：项目进度与功能讨论.txt",
+      "scene": "project_weekly_meeting",
+      "recommended_template": "project-weekly-meeting.md",
+      "recommended_industry": null,
+      "usage": ["regression", "weekly_meeting", "project_progress"],
+      "sensitivity": "medium"
+    },
+    {
+      "file": "技术岗位候选人面试会议纪要.txt",
+      "scene": "technical_interview",
+      "recommended_template": "technical-interview-summary.md",
+      "recommended_industry": null,
+      "usage": ["new_template_seed", "classifier_routing_gap", "regression"],
+      "sensitivity": "high"
+    }
+  ]
+}

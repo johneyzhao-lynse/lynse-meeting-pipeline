@@ -183,6 +183,32 @@ class TestBuildMessagesDynamicTemplate(unittest.TestCase):
             transcript_path.unlink()
             platform_path.unlink()
 
+    def test_build_messages_appends_profile_after_dynamic_template(self):
+        base_path = _make_base_template("base template content")
+        transcript_path = _make_base_template("transcript content")
+        platform_path = _make_base_template("platform prompt")
+        try:
+            messages = build_messages(
+                industry_prompt_path=None,
+                template_path=base_path,
+                transcript_path=transcript_path,
+                user_style="test style",
+                platform_prompt_path=platform_path,
+                dynamic_template_text="DYNAMIC TEMPLATE TEXT",
+                profile_prompt_text="PROFILE PROMPT TEXT",
+            )
+            user_msg = messages[1]["content"]
+            self.assertIn("DYNAMIC TEMPLATE TEXT", user_msg)
+            self.assertIn("PROFILE PROMPT TEXT", user_msg)
+            self.assertLess(
+                user_msg.index("DYNAMIC TEMPLATE TEXT"),
+                user_msg.index("PROFILE PROMPT TEXT"),
+            )
+        finally:
+            base_path.unlink()
+            transcript_path.unlink()
+            platform_path.unlink()
+
     def test_build_messages_no_dynamic_falls_to_file(self):
         base_path = _make_base_template("base template content")
         transcript_path = _make_base_template("transcript content")

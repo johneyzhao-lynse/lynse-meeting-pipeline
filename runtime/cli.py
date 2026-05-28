@@ -36,11 +36,13 @@ from .title import extract_date
 from .safety import detect_safety_risks, sanitize_sensitive_output
 from .user_prompt.parser import parse_user_prompt_markdown
 from .user_prompt.compiler import compile_user_prompt
+from .user_prompt.profile import compile_profile_prompt, load_user_prompt_profile
 from .user_prompt.validator import validate_user_prompt
 
 
 DEFAULT_STYLE = "请使用专业、简洁、清晰、适合业务沟通的表达。区分已确认事实、分析判断和待确认信息。"
 DEFAULT_PROMPT_VERSION = "v1"
+DEFAULT_USER_PROMPT_PROFILE_FILE = ROOT / "config" / "user_prompts.local.json"
 
 
 def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
@@ -127,6 +129,22 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--classify-meeting", action="store_true",
         help="Use LLM to classify meeting type/category/mode (opt-in, requires API call)")
     parser.add_argument("--user-prompt-file", help="Editable user prompt markdown file")
+    parser.add_argument("--user-prompt-profile", help="Profile name from config/user_prompts.local.json")
+    parser.add_argument(
+        "--user-prompt-profile-file",
+        default=str(DEFAULT_USER_PROMPT_PROFILE_FILE),
+        help="Local user prompt profile JSON file. Defaults to config/user_prompts.local.json.",
+    )
+    parser.add_argument(
+        "--audience",
+        choices=["self", "manager", "customer", "team"],
+        help="Per-run target audience used with --user-prompt-profile.",
+    )
+    parser.add_argument(
+        "--summary-depth",
+        choices=["concise", "full"],
+        help="Per-run summary depth used with --user-prompt-profile.",
+    )
     parser.add_argument("--show-user-prompt", action="store_true", help="Show the resolved user prompt markdown and exit")
     parser.add_argument("--export-user-prompt", help="Write the resolved user prompt markdown to a file and exit")
     parser.add_argument("--validate-user-prompt", action="store_true", help="Validate the provided user prompt file and exit")
@@ -244,6 +262,7 @@ def main(argv: list[str] | None = None) -> int:
         run_log_path = resolve_run_log_path(args.run_log_output, transcript_path)
 
         user_prompt_text = None
+        profile_prompt_text = None
         if args.user_prompt_file:
             user_prompt_raw = read_text(resolve_file(ROOT, args.user_prompt_file))
             validation = validate_user_prompt(user_prompt_raw)
@@ -265,6 +284,24 @@ def main(argv: list[str] | None = None) -> int:
                 export_path = resolve_file(ROOT, args.export_user_prompt)
                 export_path.parent.mkdir(parents=True, exist_ok=True)
                 export_path.write_text(user_prompt_text, encoding="utf-8")
+                print(str(export_path))
+                return 0
+        elif args.user_prompt_profile:
+            profile_path = resolve_file(ROOT, args.user_prompt_profile_file)
+            profile = load_user_prompt_profile(profile_path, args.user_prompt_profile)
+            profile_prompt_text = compile_profile_prompt(
+                profile,
+                audience=args.audience,
+                summary_depth=args.summary_depth,
+            )
+            if args.show_user_prompt:
+                print(profile_prompt_text)
+                return 0
+            if args.export_user_prompt:
+                export_path = Path(args.export_user_prompt)
+                export_path = export_path if export_path.is_absolute() else ROOT / export_path
+                export_path.parent.mkdir(parents=True, exist_ok=True)
+                export_path.write_text(profile_prompt_text, encoding="utf-8")
                 print(str(export_path))
                 return 0
 
@@ -304,6 +341,7 @@ def main(argv: list[str] | None = None) -> int:
             platform_prompt_path=PLATFORM_PROMPT,
             user_prompt_text=user_prompt_text,
             dynamic_template_text=dynamic_template_text,
+            profile_prompt_text=profile_prompt_text,
             meeting_type=meeting_type,
             meeting_date=meeting_date,
         )
@@ -411,6 +449,7 @@ def main(argv: list[str] | None = None) -> int:
                 safety_mode="strict",
                 platform_prompt_path=PLATFORM_PROMPT,
                 user_prompt_text=user_prompt_text,
+                profile_prompt_text=profile_prompt_text,
                 meeting_type=meeting_type,
                 meeting_date=meeting_date,
             )
@@ -444,6 +483,7 @@ def main(argv: list[str] | None = None) -> int:
                 safety_mode="strict",
                 platform_prompt_path=PLATFORM_PROMPT,
                 user_prompt_text=user_prompt_text,
+                profile_prompt_text=profile_prompt_text,
                 meeting_type=meeting_type,
                 meeting_date=meeting_date,
             )
@@ -477,6 +517,9 @@ def main(argv: list[str] | None = None) -> int:
         emit_log(f"Saved run log: {run_log_path}")
         return 0
     except FileNotFoundError as exc:
+        print(str(exc), file=sys.stderr)
+        return 2
+    except ValueError as exc:
         print(str(exc), file=sys.stderr)
         return 2
     except RuntimeError as exc:

@@ -66,6 +66,112 @@ class CliIntegrationTest(unittest.TestCase):
         self.assertEqual(code, 0)
         self.assertNotIn("classification", payload)
 
+    def test_cli_profile_prompt_is_used_with_per_run_options(self):
+        stdout = io.StringIO()
+        with TemporaryDirectory() as tmp_dir:
+            profile_path = Path(tmp_dir) / "user_prompts.local.json"
+            profile_path.write_text(
+                json.dumps(
+                    {
+                        "profiles": {
+                            "default": {
+                                "user_role": "销售负责人",
+                                "industry": "企业服务软件",
+                                "meeting_scenarios": ["客户拜访", "销售跟进"],
+                                "style_preference": "简洁、业务导向",
+                                "evidence_preference": "关键判断保留原话依据",
+                            }
+                        }
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+            with redirect_stdout(stdout):
+                code = cli.main([
+                    "--industry", "insurance-industry.md",
+                    "--template", "insurance-claim-communication.md",
+                    "--transcript", "2026-04-20 16:01:10.txt",
+                    "--user-prompt-profile", "default",
+                    "--user-prompt-profile-file", str(profile_path),
+                    "--audience", "manager",
+                    "--summary-depth", "concise",
+                    "--dry-run",
+                    "--dry-run-full",
+                ])
+
+        payload = json.loads(stdout.getvalue())
+        user_message = payload["messages"][1]["content"]
+        self.assertEqual(code, 0)
+        self.assertIn("销售负责人", user_message)
+        self.assertIn("目标读者：上级", user_message)
+        self.assertIn("概要决策型", user_message)
+        self.assertIn("会议事实优先于用户风格", user_message)
+
+    def test_user_prompt_file_takes_priority_over_profile(self):
+        stdout = io.StringIO()
+        with TemporaryDirectory() as tmp_dir:
+            tmp_path = Path(tmp_dir)
+            profile_path = tmp_path / "user_prompts.local.json"
+            profile_path.write_text(
+                json.dumps(
+                    {
+                        "profiles": {
+                            "default": {
+                                "user_role": "销售负责人",
+                                "style_preference": "简洁、业务导向",
+                            }
+                        }
+                    },
+                    ensure_ascii=False,
+                ),
+                encoding="utf-8",
+            )
+            user_prompt_path = tmp_path / "one_off_prompt.md"
+            user_prompt_path.write_text(
+                "# 总结目标\n一次性提示词优先。\n\n# 输出结构\n\n## 重点结论\n",
+                encoding="utf-8",
+            )
+            with redirect_stdout(stdout):
+                code = cli.main([
+                    "--industry", "insurance-industry.md",
+                    "--template", "insurance-claim-communication.md",
+                    "--transcript", "2026-04-20 16:01:10.txt",
+                    "--user-prompt-file", str(user_prompt_path),
+                    "--user-prompt-profile", "default",
+                    "--user-prompt-profile-file", str(profile_path),
+                    "--audience", "customer",
+                    "--summary-depth", "full",
+                    "--dry-run",
+                    "--dry-run-full",
+                ])
+
+        payload = json.loads(stdout.getvalue())
+        user_message = payload["messages"][1]["content"]
+        self.assertEqual(code, 0)
+        self.assertIn("一次性提示词优先", user_message)
+        self.assertNotIn("销售负责人", user_message)
+        self.assertNotIn("目标读者：客户", user_message)
+
+    def test_missing_user_prompt_profile_returns_error(self):
+        stdout = io.StringIO()
+        stderr = io.StringIO()
+        with TemporaryDirectory() as tmp_dir:
+            profile_path = Path(tmp_dir) / "user_prompts.local.json"
+            profile_path.write_text('{"profiles": {}}', encoding="utf-8")
+            with redirect_stdout(stdout), redirect_stderr(stderr):
+                code = cli.main([
+                    "--industry", "insurance-industry.md",
+                    "--template", "insurance-claim-communication.md",
+                    "--transcript", "2026-04-20 16:01:10.txt",
+                    "--user-prompt-profile", "missing",
+                    "--user-prompt-profile-file", str(profile_path),
+                    "--dry-run",
+                ])
+
+        self.assertEqual(code, 2)
+        self.assertIn("User prompt profile not found: missing", stderr.getvalue())
+
     def test_reactive_mode_retries_only_for_sensitive_api_failure(self):
         stdout = io.StringIO()
         stderr = io.StringIO()
